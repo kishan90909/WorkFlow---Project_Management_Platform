@@ -1,0 +1,60 @@
+services:
+  mongo:
+    image: mongo:7
+    restart: unless-stopped
+    command: ["mongod", "--auth"]
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_ROOT_USERNAME:?Set MONGO_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_ROOT_PASSWORD:?Set MONGO_ROOT_PASSWORD}
+      MONGO_INITDB_DATABASE: workflow
+    volumes:
+      - workflow_prod_data:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.adminCommand('ping').ok"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  api:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: 5000
+      CLIENT_URL: ${CLIENT_URL:?Set CLIENT_URL to the deployed app origin}
+      MONGODB_URI: mongodb://${MONGO_ROOT_USERNAME}:${MONGO_ROOT_PASSWORD}@mongo:27017/workflow?authSource=admin
+      JWT_ACCESS_SECRET: ${JWT_ACCESS_SECRET:?Set a random secret of at least 32 characters}
+      JWT_ACCESS_EXPIRES_IN: ${JWT_ACCESS_EXPIRES_IN:-15m}
+      BCRYPT_SALT_ROUNDS: ${BCRYPT_SALT_ROUNDS:-12}
+      TRUST_PROXY: "true"
+      API_RATE_LIMIT: ${API_RATE_LIMIT:-600}
+    depends_on:
+      mongo:
+        condition: service_healthy
+    volumes:
+      - workflow_uploads:/app/uploads
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:5000/api/v1/ready').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 20s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        VITE_API_URL: /api/v1
+    restart: unless-stopped
+    ports:
+      - "${WEB_PORT:-8080}:80"
+    depends_on:
+      api:
+        condition: service_healthy
+
+volumes:
+  workflow_prod_data:
+  workflow_uploads:

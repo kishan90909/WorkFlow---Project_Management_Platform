@@ -1,0 +1,27 @@
+import { Router } from 'express';
+import { authenticate } from '../middlewares/authenticate.js';
+import { auditMutations } from '../services/auditService.js';
+import { validate } from '../middlewares/validate.js';
+import { taskSchemas } from '../validators/schemas.js';
+import { createTask, deleteTask, getTask, listTasks, updateTask, updateTaskStatus } from '../controllers/taskController.js';
+import { createComment, deleteComment, deleteAttachment, downloadAttachment, listAttachments, listComments, uploadAttachment } from '../controllers/collaborationController.js';
+import { upload } from '../middlewares/upload.js';
+import { accessibleTask } from '../controllers/taskController.js';
+import { asyncHandler } from '../utils/asyncHandler.js';
+
+const router = Router();
+router.use(authenticate, auditMutations);
+router.get('/', listTasks);
+router.post('/', validate(taskSchemas.create), createTask);
+router.get('/:id', validate(taskSchemas.id), getTask);
+router.patch('/:id', validate(taskSchemas.update), updateTask);
+router.delete('/:id', validate(taskSchemas.id), deleteTask);
+router.patch('/:id/status', validate(taskSchemas.status), updateTaskStatus);
+router.get('/:id/comments', listComments);
+router.post('/:id/comments', validate(taskSchemas.comment), createComment);
+router.delete('/:id/comments/:commentId', deleteComment);
+router.get('/:id/attachments', listAttachments);
+router.get('/:id/attachments/:attachmentId/download', downloadAttachment);
+router.post('/:id/attachments', asyncHandler(async (req, _res, next) => { await accessibleTask(req.params.id, req.user); next(); }), upload.single('file'), uploadAttachment);
+router.delete('/:id/attachments/:attachmentId', deleteAttachment);
+export default router;
