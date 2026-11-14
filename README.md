@@ -1,283 +1,490 @@
-# WorkFlow
+# 🚀 WorkFlow - MERN Project Management System
 
-WorkFlow is an industry-oriented project management application built with the MERN stack.
+<div align="center">
 
-## Implemented milestones
+### A Role-Based Project Management Platform
 
-- Step 1: React/Vite frontend, Express API, MongoDB/Mongoose configuration, component-based folders.
-- Step 2: Registration, login, JWT access tokens, protected frontend routes.
-- Step 3: Admin, Project Manager, and Team Member role checks with backend resource ownership rules.
-- Step 4: Admin user management, team creation, manager and member assignment.
-- Step 5: Project creation, editing, deletion, manager/team/member assignment, and project visibility rules.
-- Step 6: Task CRUD, project assignment, assignee validation, priority, deadlines, and status updates.
-- Step 7: Four-column Kanban board with drag-and-drop status changes.
-- Step 8: Task comments and validated local file attachments (10 MB maximum).
-- Step 9: Persisted notifications delivered in real time through authenticated Socket.IO rooms.
-- Step 10: Role-scoped project/task analytics and dashboard charts.
+**Live Demo:** [WorkFlow Application](https://workflowpro1.netlify.app)
 
-## Technology
+</div>
 
-- React 19, Vite, Tailwind CSS 4
-- Redux Toolkit, React Router, Axios
-- Node.js, Express 5, MongoDB, Mongoose
-- JWT, bcryptjs, Zod, Helmet, CORS, rate limiting
+<div align="center">
 
-## Requirements
+![React](https://img.shields.io/badge/Frontend-React_19-61DAFB?logo=react)
+![Vite](https://img.shields.io/badge/Build-Vite-646CFF?logo=vite)
+![Node](https://img.shields.io/badge/Backend-Node.js-339933?logo=nodedotjs)
+![Express](https://img.shields.io/badge/API-Express.js-000000?logo=express)
+![MongoDB](https://img.shields.io/badge/Database-MongoDB-47A248?logo=mongodb)
+![Socket.IO](https://img.shields.io/badge/RealTime-Socket.IO-black?logo=socketdotio)
+![JWT](https://img.shields.io/badge/Auth-JWT-black?logo=jsonwebtokens)
+![Tailwind](https://img.shields.io/badge/Styling-Tailwind_CSS-06B6D4?logo=tailwindcss)
 
-- Node.js 20.19+ or 22.12+
-- MongoDB 7+ running locally or a MongoDB Atlas connection
+</div>
 
-## Setup
+---
 
-### 1. Frontend
+## 📌 PROJECT OVERVIEW
 
-```bash
-npm install
-cp .env.example .env
-npm run dev
+WorkFlow is an industry-oriented Project Management System developed using the MERN stack. It helps organizations manage projects, teams, tasks, resources, and team collaboration through a centralized platform.
+
+The application provides role-based access for Admins, Project Managers, and Team Members. It includes task management, Kanban boards, real-time notifications, workload monitoring, risk insights, audit logs, and project analytics.
+
+The system is designed with a modular architecture, secure REST APIs, and real-time communication to improve project visibility, team coordination, and productivity.
+
+---
+
+## ✅ FINAL PROJECT STATUS
+
+- **Development:** ✅ Completed
+- **Frontend:** ✅ Deployed on Netlify
+- **Backend:** ✅ Deployed on Render
+- **Database:** ✅ Connected with MongoDB Atlas
+- **Authentication:** ✅ JWT Authentication
+- **Authorization:** ✅ Role-Based Access Control
+- **Real-Time Communication:** ✅ Socket.IO
+- **Build:** ✅ Successful
+- **Lint:** ✅ Successful
+- **Automated Tests:** ✅ Passed (33/33, as verified during project testing)
+- **GitHub Repository:** ✅ Connected
+
+---
+
+## 🌟 FEATURES IMPLEMENTED
+
+### 👨‍💼 Admin Management
+
+- ✅ **User Management** - Create, view, update, and manage platform users.
+- ✅ **Team Management** - Create teams and assign Project Managers and Team Members.
+- ✅ **Project Management** - Manage all projects, assignments, priorities, and project status.
+- ✅ **Audit Logs** - Track workspace activities, user actions, and important changes.
+- ✅ **Workload Management** - Monitor team workload, active tasks, completed tasks, and overdue tasks.
+- ✅ **Risk Insights** - Identify project risks, overdue tasks, critical priorities, and performance issues.
+- ✅ **Project Analytics** - Monitor project completion, task distribution, and overall performance.
+- ✅ **Workspace Overview** - View centralized project and team information.
+
+### 📋 Project Management
+
+- ✅ **Project Creation** - Create and manage projects with project details and deadlines.
+- ✅ **Project Assignment** - Assign Project Managers, teams, and project members.
+- ✅ **Project Tracking** - Monitor project status, priority, and progress.
+- ✅ **Project Visibility** - Display projects according to user roles and assignments.
+- ✅ **Project Analytics** - Track completion rates and task distribution across projects.
+
+### 📝 Task Management
+
+- ✅ **Task CRUD Operations** - Create, view, update, and delete tasks.
+- ✅ **Task Assignment** - Assign tasks to eligible project team members.
+- ✅ **Task Priorities** - Manage Low, Medium, High, and Critical priorities.
+- ✅ **Task Deadlines** - Set and monitor task due dates.
+- ✅ **Task Status Management** - Track Todo, In Progress, Review, and Done statuses.
+- ✅ **Kanban Board** - Manage tasks using a four-column Kanban board.
+- ✅ **Drag-and-Drop** - Update task status by moving task cards between columns.
+- ✅ **Task Comments** - Support discussions and collaboration on individual tasks.
+- ✅ **File Attachments** - Upload and manage task-related documents and files.
+
+### 👥 Team Collaboration
+
+- ✅ **Role-Based Access** - Separate permissions for Admin, Project Manager, and Team Member.
+- ✅ **Team Assignment** - Assign members to teams and projects.
+- ✅ **Task Collaboration** - Allow team members to work on assigned tasks.
+- ✅ **Comments and Discussions** - Improve communication within project tasks.
+- ✅ **Real-Time Notifications** - Deliver instant notifications using Socket.IO.
+- ✅ **Notification Management** - View and manage notifications.
+
+### 📊 Reports & Analytics
+
+- ✅ **Project Reports** - Display project and task performance information.
+- ✅ **Task Analytics** - Track completed, overdue, and active tasks.
+- ✅ **Priority Distribution** - Analyze tasks based on priority.
+- ✅ **Project Completion Rates** - Monitor project-wise completion percentages.
+- ✅ **Workload Insights** - Identify overloaded teams and members.
+- ✅ **Risk Analysis** - Highlight project delays and potential risks.
+- ✅ **Audit History** - Review important workspace activities.
+
+---
+
+## 🔐 ROLE-BASED ACCESS CONTROL
+
+WorkFlow supports three different user roles with separate permissions.
+
+| Module | Admin | Project Manager | Team Member |
+|---|---|---|---|
+| User Management | Full Access | No Access | No Access |
+| Team Management | Full Access | Own Teams | No Access |
+| Project Management | All Projects | Own Projects | Assigned Projects |
+| Task Management | All Projects | Managed Projects | Assigned Tasks |
+| Kanban Board | Full Access | Managed Projects | Assigned Tasks |
+| Comments | Authorized Access | Authorized Access | Authorized Access |
+| Notifications | Yes | Yes | Yes |
+| Workload | Workspace Scope | Managed Scope | No Admin Access |
+| Risk Insights | Workspace Scope | Managed Scope | No Admin Access |
+| Audit Logs | Full Access | No Access | No Access |
+| Project Analytics | Workspace Scope | Managed Scope | Assigned Scope |
+
+All important permissions are validated on the backend to prevent unauthorized access.
+
+---
+
+## ⚙️ TECHNOLOGY STACK
+
+### Frontend
+- React 19
+- Vite
+- Tailwind CSS 4
+- Redux Toolkit
+- React Router
+- Axios
+- React Hook Form
+- Zod
+- Recharts
+- Lucide React
+- Socket.IO Client
+
+### Backend
+- Node.js
+- Express.js 5
+- REST API Architecture
+- JWT Authentication
+- bcryptjs
+- Role-Based Access Control
+- Socket.IO
+- Mongoose
+- Zod Validation
+- Helmet
+- Express Rate Limit
+- Multer
+
+### Database
+- MongoDB
+- MongoDB Atlas
+- Mongoose ODM
+
+### Deployment & Development Tools
+- Git
+- GitHub
+- Docker
+- Docker Compose
+- Render
+- Netlify
+- MongoDB Atlas
+
+---
+
+## 📁 PROJECT STRUCTURE
+
+```text
+WorkFlow/
+│
+├── public/
+│
+├── server/
+│   ├── src/
+│   │   ├── config/
+│   │   ├── constants/
+│   │   ├── controllers/
+│   │   ├── middlewares/
+│   │   ├── models/
+│   │   ├── routes/
+│   │   ├── scripts/
+│   │   ├── services/
+│   │   ├── sockets/
+│   │   ├── utils/
+│   │   ├── validators/
+│   │   ├── app.js
+│   │   └── server.js
+│   │
+│   ├── tests/
+│   ├── Dockerfile
+│   └── package.json
+│
+├── src/
+│   ├── components/
+│   │   ├── common/
+│   │   └── layout/
+│   │
+│   ├── features/
+│   │   └── auth/
+│   │
+│   ├── hooks/
+│   ├── layouts/
+│   ├── pages/
+│   ├── routes/
+│   ├── services/
+│   ├── store/
+│   ├── App.jsx
+│   └── main.jsx
+│
+├── Dockerfile
+├── docker-compose.yml
+├── docker-compose.production.yml
+├── nginx.conf
+├── package.json
+├── vite.config.js
+└── README.md
 ```
 
-On Windows PowerShell, use `Copy-Item .env.example .env`.
+---
 
-### 2. MongoDB
+## 🔄 REAL-TIME NOTIFICATION SYSTEM
 
-Start the local MongoDB container from the project root:
+WorkFlow uses Socket.IO for real-time communication between users and the backend.
 
-```bash
-docker compose up -d
-```
+- Authenticated Socket.IO connections.
+- Private user-specific notification rooms.
+- Real-time notification delivery.
+- MongoDB-based notification persistence.
+- REST API support for notification history.
+- Read and read-all notification management.
 
-MongoDB is exposed on `127.0.0.1:27018` to avoid the common local `27017` port conflict.
+Notifications are saved in MongoDB before being delivered to connected users.
 
-### 3. Backend
+---
 
-```bash
-cd server
-npm install
-Copy-Item .env.example .env
-```
+## 🔒 SECURITY IMPLEMENTATION
 
-Edit `server/.env` and set `MONGODB_URI` and a random `JWT_ACCESS_SECRET` with at least 32 characters.
+- JWT-based authentication.
+- Role-Based Access Control (RBAC).
+- Password hashing using bcryptjs.
+- Backend resource ownership validation.
+- Protected API routes.
+- Request validation using Zod.
+- Security headers using Helmet.
+- API rate limiting.
+- Secure error handling.
+- Audit logging for important workspace changes.
+- File upload validation and size restrictions.
+- Request ID tracking for troubleshooting.
 
-Start the API:
+**Security note:** The current implementation uses short-lived JWT access tokens. Refresh-token rotation, password reset, and MFA are not implemented yet. Local file uploads also require private persistent storage for reliable production use.
 
-```bash
-npm run dev
-```
+---
 
-### 4. Create the first admin
+## 📊 TESTING & VALIDATION
 
-From the `server` directory:
+### Final Test Summary
 
-```bash
-npm run seed:admin
-```
+| Validation | Result |
+|---|---|
+| Automated Tests | 33/33 Passed |
+| Production Build | Successful |
+| Lint | 0 Warnings, 0 Errors |
+| Dependency Audit | 0 Vulnerabilities at final verification |
+| Backend Startup | Successful |
+| MongoDB Connection | Successful |
+| API Health Check | Successful |
+| Frontend Deployment | Successful |
 
-Set `ADMIN_NAME`, `ADMIN_EMAIL`, and `ADMIN_PASSWORD` in `server/.env` before running the command.
+### Automated Testing Commands
 
-### 5. Open the application
-
-- Frontend: `http://localhost:5173`
-- API: `http://localhost:5000/api/v1`
-- Health check: `http://localhost:5000/api/v1/health`
-
-## Roles and permissions
-
-| Capability | Admin | Project Manager | Team Member |
-|---|---:|---:|---:|
-| Manage users | Yes | No | No |
-| Create/manage teams | Yes | Own teams | No |
-| Create projects | Yes | Own projects | No |
-| View projects | All | Managed projects | Assigned projects |
-| Manage project assignments | Yes | Own projects | No |
-
-The API is the source of truth for permissions. Frontend route guards improve navigation but do not replace backend authorization.
-
-## API overview
-
-- `POST /api/v1/auth/register`
-- `POST /api/v1/auth/login`
-- `POST /api/v1/auth/logout`
-- `GET /api/v1/auth/me`
-- `GET|POST /api/v1/users`, `GET|PATCH|DELETE /api/v1/users/:id`
-- `GET|POST /api/v1/teams`, `PATCH|DELETE /api/v1/teams/:id`
-- `GET|POST /api/v1/projects`, `GET|PATCH|DELETE /api/v1/projects/:id`
-- `GET|POST /api/v1/tasks`, `GET|PATCH|DELETE /api/v1/tasks/:id`, `PATCH /api/v1/tasks/:id/status`
-- `GET|POST /api/v1/tasks/:id/comments`, `DELETE /api/v1/tasks/:id/comments/:commentId`
-- `GET|POST /api/v1/tasks/:id/attachments`, `DELETE /api/v1/tasks/:id/attachments/:attachmentId`
-- `GET /api/v1/notifications`, `PATCH /api/v1/notifications/read-all`, `PATCH /api/v1/notifications/:id/read`
-- `GET /api/v1/reports/overview`
-
-Send `Authorization: Bearer <access-token>` on protected API requests.
-
-## Current milestone boundaries
-
-Steps 1-5 are implemented as the first working slice. Automated integration tests, refresh-token rotation, password reset, cloud file storage, and production deployment remain future hardening work. Do not expose this initial access-token setup as production-ready authentication without completing the remaining security work.
-
-## Steps 6-10 notes
-
-### Task permissions
-- Admins can access and manage tasks in all projects.
-- Project Managers can manage tasks only in projects they manage.
-- Team Members can view and change the status of tasks assigned to them.
-- Task assignees must be active Team Members already assigned to the selected project.
-
-### Kanban
-The board uses four states: `todo`, `in_progress`, `review`, and `done`. Drag a task card to another column to update its status. The server checks task access before saving the change.
-
-### Comments and attachments
-- Comments are stored with author and task references.
-- Attachments are stored in `server/uploads` and downloaded through an authenticated API route after task-access checks.
-- Maximum file size is 10 MB.
-- Accepted MIME types: JPEG, PNG, WebP, PDF, TXT, ZIP, DOCX, XLSX.
-- For production, replace local disk storage with private object storage (for example, S3 or Cloudinary) and signed download URLs.
-
-### Socket.IO notifications
-Socket connections require the same JWT access token used by the REST API. Each connection joins a private `user:<id>` room. Notification records are persisted in MongoDB before the server emits `notification:new`.
-
-### Reports
-`GET /api/v1/reports/overview` returns task totals, completion rate, overdue count, status counts, priority counts, and per-project completion. Data is scoped to the signed-in user's accessible projects and assignments.
-
-## Backend automated tests
-
-Run the backend automated validation and security smoke tests:
+Run security tests:
 
 ```bash
 npm test
 ```
 
-The security smoke suite uses Node.js built-in test runner and does not require MongoDB. It covers request validation, role authorization, JWT claims, error mapping, API health, security headers, unauthenticated access, and route handling.
-
-Run database-backed integration tests separately. They require MongoDB running on `127.0.0.1:27018` and use only the dedicated `workflow_test` database:
+Run integration tests:
 
 ```bash
 npm run test:integration
 ```
 
-The integration suite verifies registration and login, project creation and duplicate handling, task assignment, Team Member permissions, status updates, resource isolation, and project deletion. It clears collections in the dedicated test database before running. Never point `TEST_MONGODB_URI` at a development or production database.
-## Automated testing
+Run all backend tests:
 
-Run the security suite:
-
-```powershell
-npm test
-```
-
-Run MongoDB-backed integration tests against the isolated `workflow_test` database:
-
-```powershell
-docker compose up -d
-npm run test:integration
-```
-
-Run both suites together:
-
-```powershell
+```bash
 npm --prefix server run test:all
 ```
 
-Integration tests require a dedicated MongoDB database whose name ends in `_test`. Set `TEST_MONGODB_URI` to override the default test database URI. Never point it at a development or production database.
+Run test coverage:
 
-## Admin Audit Logs
+```bash
+npm --prefix server run test:coverage
+```
 
-Administrators can open **Audit Logs** from the sidebar to review successful workspace changes. The activity history records the actor, role, action, resource, resource identifier, timestamp, IP address, and a safe list of changed field names. It supports text search, resource filtering, date filtering, pagination, and CSV export.
+Build frontend:
 
-The audit API is restricted to administrators:
-
-- `GET /api/v1/audit-logs`
-- Query parameters: `search`, `resource`, `from`, `to`, `page`, and `limit`
-
-Audit records intentionally store field names only, never submitted field values, passwords, access tokens, or secrets. Failed requests and read-only requests are not recorded as mutations. Authentication sign-in and sign-out events are also recorded.
-
-## Project Risk & Performance Intelligence
-
-The admin-only Risk Insights page is available at `/risk-insights` and reads `GET /api/v1/risk-insights`.
-
-The endpoint summarizes active projects using existing project and task fields. It reports completion rate, average task progress, overdue open tasks, tasks due within seven days, critical open tasks, and project schedule lag when both project start and end dates exist. Completed and cancelled projects are excluded from the risk register.
-
-Risk scores are planning heuristics, not predictions. The score adds 15 points per overdue open task (maximum 45), 10 points per open task due within seven days (maximum 20), 10 points per critical open task (maximum 20), and 15 points when completion is at least 25 percentage points behind elapsed project time. Scores of 60+ are high risk, 30-59 are medium risk, and below 30 are low risk. These thresholds are configurable in `server/src/controllers/riskController.js`.
-
-## Project manager insights access
-
-Project managers can open the Workload and Risk Insights pages from their sidebar. These views are scoped to projects and teams managed by the signed-in project manager. Admins continue to see workspace-wide insights. Team members do not have access to either page or API.
-
-## Phase 5: Production readiness and operational hardening
-
-### Security and API protection
-- Helmet security headers are enabled, the Express fingerprint header is disabled, and CORS only accepts configured frontend origins. Set multiple origins as a comma-separated `CLIENT_URL` value.
-- The API has a shared rate limit (`API_RATE_LIMIT`, default 600 requests per 15 minutes) and a stricter authentication limit (20 requests per 15 minutes).
-- JSON and URL-encoded request bodies are limited to 1 MB. Uploads remain limited to one file up to 10 MB and use the authenticated attachment API. The uploads directory is not exposed as a public static folder.
-- Every request receives an `X-Request-Id`. The same ID is included in API error responses and server request logs to help trace failures.
-- Production responses hide internal server errors and stack traces. Invalid JSON, oversized bodies, duplicate keys, invalid IDs, and validation failures return consistent client-safe errors.
-- JWT access tokens remain short-lived. This release does not implement refresh-token rotation, password reset, MFA, or token revocation; plan those before using the app for sensitive production workloads.
-
-### Health, readiness, and shutdown
-- `GET /api/v1/health` is a liveness check.
-- `GET /api/v1/ready` returns 200 only when MongoDB is connected and 503 otherwise.
-- The API handles SIGINT and SIGTERM by closing Socket.IO, the HTTP server, and the MongoDB connection. A 10-second shutdown guard prevents indefinite process hangs.
-- Additional compound indexes support project membership, project team/status, audit history, comments, and attachment lookups. Development auto-creates indexes. In production, create them once during a maintenance window with `npm --prefix server run db:indexes` before routing user traffic.
-
-### Automated validation
-Run from the repository root:
-
-```powershell
-npm ci
-npm --prefix server ci
-npm run test:all
-npm run test:coverage
+```bash
 npm run build
+```
+
+Run lint:
+
+```bash
 npm run lint
 ```
 
-The test suite includes API security checks, request IDs, readiness behavior, malformed JSON handling, and checks that local upload files are not publicly exposed. Database-backed integration tests still require a dedicated database ending in `_test`.
+---
 
-### Production Docker deployment
-The repository includes a production multi-container setup:
-- `Dockerfile`: builds the React app and serves it with Nginx.
-- `server/Dockerfile`: runs the Express API as a non-root user.
-- `nginx.conf`: serves the SPA and proxies REST and Socket.IO traffic to the API.
-- `docker-compose.production.yml`: starts MongoDB with authentication, the API, and the web container with persistent database and upload volumes.
+## 🚀 LIVE DEPLOYMENT
 
-Create a root `.env.production` file with these values. Use a long random JWT secret, a strong MongoDB password, and the real public frontend origin. Keep passwords URL-safe (letters and numbers) unless you URL-encode special characters in the MongoDB URI.
+### Application URLs
+
+| Component | Platform | URL |
+|---|---|---|
+| Frontend | Netlify | https://workflowpro1.netlify.app |
+| Backend | Render | https://workflow-backend-11iq.onrender.com |
+| Database | MongoDB Atlas | Cloud Hosted |
+| Repository | GitHub | https://github.com/kishan90909/WorkFlow |
+
+### Backend Health Check
+
+```text
+https://workflow-backend-11iq.onrender.com/api/v1/health
+```
+
+### Deployment Architecture
+
+```text
+             Users
+               |
+               v
+       Netlify Frontend
+         React + Vite
+               |
+               | REST API
+               | Socket.IO
+               v
+        Render Backend
+        Node + Express
+               |
+               v
+         MongoDB Atlas
+             Database
+```
+
+---
+
+## 💻 LOCAL DEVELOPMENT SETUP
+
+### 1. Clone Repository
+
+```bash
+git clone https://github.com/kishan90909/WorkFlow.git
+cd WorkFlow
+```
+
+### 2. Install Frontend Dependencies
+
+```bash
+npm install
+```
+
+### 3. Configure Frontend Environment
+
+Create a `.env` file in the project root.
 
 ```env
-MONGO_ROOT_USERNAME=workflow_root
-MONGO_ROOT_PASSWORD=use_a_long_random_password
-JWT_ACCESS_SECRET=use_a_different_random_secret_at_least_32_characters
-CLIENT_URL=https://your-domain.example
-WEB_PORT=8080
+VITE_API_URL=http://localhost:5000/api/v1
+VITE_API_ORIGIN=http://localhost:5000
 ```
 
-Start the production stack:
+### 4. Start MongoDB
 
-```powershell
-docker compose --env-file .env.production -f docker-compose.production.yml up -d --build
+Using Docker Compose:
+
+```bash
+docker compose up -d
 ```
 
-After the API is healthy, ensure the production indexes once before opening the app to users:
+### 5. Install Backend Dependencies
 
-```powershell
-docker compose --env-file .env.production -f docker-compose.production.yml exec api node src/scripts/createIndexes.js
+```bash
+npm --prefix server install
 ```
 
-Open `http://localhost:8080` for a local deployment, or put a TLS-terminating reverse proxy/load balancer in front of the web container for public deployment. Configure HTTPS, DNS, backups, monitoring, and secret storage in the hosting environment before exposing the service publicly. Do not commit `.env.production`.
+Create `server/.env` using `server/.env.example`.
 
-### Operational checklist before public launch
-- Configure HTTPS and secure DNS at the hosting edge.
-- Store secrets in the hosting provider's secret manager.
-- Configure automated MongoDB backups and test restoration.
-- Configure persistent, private storage and retention for attachments.
-- Configure centralized logs, uptime monitoring, alerts, and database monitoring.
-- Run integration tests against a dedicated staging database and perform manual role-based acceptance tests.
-- Review privacy, data retention, and applicable legal requirements for your deployment region.
+Configure:
 
-The included Docker setup is a deployable starting point, not a substitute for production infrastructure configuration, TLS, backups, and operational monitoring.
+```env
+NODE_ENV=development
+PORT=5000
+MONGODB_URI=mongodb://127.0.0.1:27018/workflow
+JWT_ACCESS_SECRET=your_secure_secret_at_least_32_characters
+CLIENT_URL=http://localhost:5173
+```
 
-## Phase 6: Advanced Project Management
+Set the remaining environment variables according to `server/.env.example`.
 
-- Project analytics: administrators and project managers can view task completion, overdue counts, priority distribution, and per-project completion rates.
-- Email notifications: in-app notifications remain available. Optional transactional email delivery uses Resend. Set `RESEND_API_KEY` and `EMAIL_FROM` in `server/.env` to enable outbound email. Without these values, the application continues with in-app notifications only.
+### 6. Create Admin Account
 
-New API endpoints:
-- `GET /api/v1/planning/analytics`
+Configure the following variables in `server/.env`:
 
+```env
+ADMIN_NAME=Your Admin Name
+ADMIN_EMAIL=admin@example.com
+ADMIN_PASSWORD=your_secure_password
+```
+
+Run:
+
+```bash
+npm --prefix server run seed:admin
+```
+
+### 7. Start Backend
+
+```bash
+npm run server
+```
+
+### 8. Start Frontend
+
+Open another terminal:
+
+```bash
+npm run dev
+```
+
+### 9. Access Application
+
+- Frontend: http://localhost:5173
+- Backend: http://localhost:5000/api/v1
+- Health Check: http://localhost:5000/api/v1/health
+
+---
+
+## 🔮 FUTURE ENHANCEMENTS
+
+- Advanced task automation and scheduling.
+- Refresh-token rotation and MFA.
+- Password reset and account recovery.
+- Cloud-based private file storage.
+- Advanced team performance reports.
+- Real-time chat and collaboration.
+- Mobile application development.
+- Advanced project forecasting.
+- Automated database backup and recovery.
+- Centralized monitoring and alerting.
+
+---
+
+## 🎯 PROJECT ACHIEVEMENTS
+
+1. Developed a centralized project management platform using the MERN stack.
+2. Implemented secure authentication and role-based authorization for three user roles.
+3. Built complete user, team, project, and task management workflows.
+4. Implemented Kanban-based task tracking with drag-and-drop functionality.
+5. Integrated real-time notifications using Socket.IO.
+6. Developed workload monitoring, risk insights, audit logs, and project analytics.
+7. Implemented automated backend testing and security validation.
+8. Deployed the frontend, backend, and database using Netlify, Render, and MongoDB Atlas.
+
+---
+
+## 👨‍💻 DEVELOPER
+
+**Developed by Kishan Patel**
+
+- GitHub: [kishan90909](https://github.com/kishan90909)
+- Repository: [WorkFlow](https://github.com/kishan90909/WorkFlow)
+- Live Application: [WorkFlow](https://workflowpro1.netlify.app)
+
+---
+
+<div align="center">
+
+### 🚀 WorkFlow - Plan Better. Collaborate Smarter. Deliver Faster.
+
+**Built with ❤️ using the MERN Stack**
+
+</div>
